@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<diff>
+	<add sel="/mdscript/cues/cue[@name='Base']/cues/cue[@name='BuildFinished_Wait']/cues/cue[@name='BuildFinished_Active']/actions/do_if[@value='event.param == $BuildModule']" pos="prepend">
+		<!--
+			Station Construction Complete
+			Station
+			[Name]
+			Zone
+			[Name]
+			Sector
+			[Name]
+			Phase
+			[ID]
+		-->
+		<!-- buildplan.{'a', 1} -->
+		<set_value name="$details" exact="[
+			[null, {1001,3}, $station.name],
+			[null, {20001,201}, $station.cluster.name + ' / ' + $station.sector.name],
+			[null, {20001,301}, $station.zone.name]
+		]"/>
+		<show_notification caption="{89640010,2000}" details="$details" queued="true" sound="notification_generic" comment="Station construction complete."/>
+	</add>
+</diff>

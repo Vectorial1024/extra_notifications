@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<language>
+	<!--
+		Numbering and etc.
+		1: Mining-related
+		2: Construction-related (including Station extension, and ship repair)
+ 		3: Station-related (including Manager incoming profit, (Manager trade???), etc.)
+		4: Combat-related (including "Hostiles sighted", "Hostiles engaged", station/ship under attack, etc.)
+		5: Trade Reports
+	-->
+	<page id="89640010" title="ExtraNotif_Main" descr="Texts for extra notifications" voice="no">
+		<!-- Old text -->
+		<t id="100">Mining Initiated</t>
+		<t id="101">%1 has initiated mining\nat %2\nto gather %3.</t>
+		<t id="102">$ENTITY_TYPE$ $ENTITY_NAME$ on $SHIP_NAME$: initiating mining at $FULL_LOCATION$ to gather $RESOURCE$.</t>
+		<!-- New text -->
+		<!-- Mining -->
+		<t id="1001">Initiating Mining</t>
+		<t id="1002">$ENTITY_TYPE$ $ENTITY_NAME$ on $SHIP_NAME$: initiating mining at $FULL_LOCATION$ to gather $RESOURCE$.</t>
+		<!-- Construction-related -->
+		<!-- Generic: for when the mod is installed after construction starts -->
+		<t id="2000">Station Construction Complete</t>
+		<t id="2001">Station Extension Complete</t>
+		<t id="2002">Station Upgrade Complete</t>
+		<t id="2003">Station Repair Complete</t>
+		<t id="2100">Ship Construction Complete</t>
+		<t id="2101">Ship Equipped Drones</t>
+		<t id="2102">Ship Equipped Ammo</t>
+		<!-- Station-related -->
+		<t id="3000">Fund Transfer to Manager</t>
+		<t id="3001">Fund Transfer to Architect</t>
+		<t id="3010">Station Surplus Received</t>
+		<t id="3011">Unused Budget Received</t>
+		<t id="3100">Manager Made Trade</t>
+		<!-- Trade Reports -->
+		<t id="5000">An hour has since passed.</t>
+		<t id="5001">Incoming financial reports.</t>
+		<t id="5002">Credit gain/loss</t>
+		<t id="5003">Goods delivered</t>
+		<t id="5100">Balance Sheet (Past Hour)</t>
+		<t id="5101">Squad Trading</t>
+		<t id="5102">Station Trading</t>
+		<t id="5103">Others</t>
+		<t id="5104">Total Balance</t>
+		<t id="5200">Trade Activity Report (Past Hour)</t>
+		<t id="5201">Squad Trading</t>
+		<t id="5202">Station Trading</t>
+		<t id="5203">Others</t>
+		<t id="5204">Total Trade Activity</t>
+	</page>
+</language>

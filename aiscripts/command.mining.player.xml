@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<diff>
+	<add sel="/aiscript/attention/actions/do_elseif[@value='$ware']/run_script[@name=&quot;'mining.ship.collect'&quot;]" pos="before">
+		<set_value name="$details" exact="[
+			[null, this.ship.name, this.typename + ' ' + this.name],
+			[null, {20001,201}, $zone.cluster.name + ' / ' + $zone.sector.name],
+			[null, {20001,301}, $zone.name],
+			[$ware.icon, {1001,40}, $ware]
+		]"/>
+		<show_notification caption="{89640010,1001}" details="$details" queued="true" sound="notification_generic" comment="Mining for [ship] at [location] for [resources] initiated."/>
+		<substitute_text text="$text" source="{89640010,1002}" comment="$ENTITY_TYPE$ $ENTITY_NAME$ on $SHIP_NAME$: initiating mining at $FULL_LOCATION$ to gather $RESOURCE$.">
+			<replace string="'$ENTITY_TYPE$'" with="this.typename" />
+			<replace string="'$ENTITY_NAME$'" with="this.name" />
+			<replace string="'$SHIP_NAME$'" with="this.ship.name" />
+			<replace string="'$FULL_LOCATION$'" with="'/' + $zone.cluster.name + '/' + $zone.sector.name + '/' + $zone.name" />
+			<replace string="'$RESOURCE$'" with="$ware" />
+        </substitute_text>
+		<write_to_logbook category="squad" text="$text" />
+	</add>
+</diff>

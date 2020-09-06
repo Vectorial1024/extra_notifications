@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<diff>
+	<add sel="//cue[@name='PlayerFactionTradeCompleted_Timeout']/actions/do_if" pos="prepend">
+		<!-- Setting a variable so to capture the amount -->
+		<set_value name="$surplusAmountFormatted" exact="($tradenpc.money - $tradenpc.maxbudget).formatted.default"/>
+		<!-- Responsible Managers safety check -->
+		<do_if value="$requiresOverride? and $requiresOverride == true">
+			<set_value name="$surplusAmountFormatted" exact="($tradenpc.money - $tradenpc.overridenAmount).formatted.default"/>
+		</do_if>
+	</add>
+	
+	<add sel="//cue[@name='PlayerFactionTradeCompleted_Timeout']/actions/do_if">
+		<set_value name="$station" exact="$tradenpc.station"/>
+		<!-- Safety check for surplus transfers before this mod is installed. -->
+		<do_if value="not @$surplusAmountFormatted">
+			<set_value name="$surplusAmountFormatted" exact="{10002,200}"/>
+		</do_if>
+		<set_value name="$details" exact="[
+				[null, $station.name, $tradenpc.typename + ' ' + $tradenpc.name],
+				[null, $station.zone.name, $station.cluster.name + ' / ' + $station.sector.name],
+				[null, {1001,1202}, $surplusAmountFormatted + ' ' + {1001,101} ]
+			]"/>
+		<show_notification caption="{89640010,3010}" details="$details" icon="achievement_money_up" queued="true" sound="ui_mon_eve_money_up" comment="Station surplus received."/>
+		<remove_value name="$station"/>
+		<remove_value name="$details"/>
+		<remove_value name="$surplusAmountFormatted"/>
+	</add>
+</diff>
